@@ -21,6 +21,7 @@ int main(int argc, char *argv[])
     /* declare any variables you need */
     int my_rank;
     int size;
+    int number;
 
     MPI_Init(&argc, &argv);
 
@@ -37,6 +38,30 @@ int main(int argc, char *argv[])
     }
 
     printf("I am process %i out of %i.\n", my_rank, size);
+
+    /* Check communicator size */
+    if (size != 2) {
+        printf("Error: Proces 1: communicator size $d, expected 2.\n", size);
+        MPI_Finalize();
+        exit(1);
+    }
+
+    /* Check send, receive */
+    if (rank == 0) {
+        number = 42;
+        printf("Process 0: sending number %i\n", number);
+        MPI_Send(&number, 1, MPI_INT, 1, 0, MPI_COMM_WORLD);
+    }
+
+    if (rank == 1) {
+        MPI_Recv(&number, 1, MPI_INT, 0, 0, MPI_COMM_WORLD, &status);
+        printf("Process 1: received number %i\n", number);
+        if (number != 42) {
+            printf("Error: Proces 1: received $d, expected 42.\n", number);
+            MPI_Finalize();
+            exit(1);
+        }
+    }
 
     MPI_Finalize();
     return 0;
