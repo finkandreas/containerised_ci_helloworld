@@ -16,7 +16,7 @@ build_job:
 
 test_job:
   stage: test
-  extends: .container-runner-daint-gpu
+  extends: .container-runner-eiger-zen2
   image: $PERSIST_IMAGE_NAME
   script:
     - /opt/helloworld/bin/hello
