@@ -48,6 +48,7 @@ osu_bw 1 node:
   variables:
     SLURM_JOB_NUM_NODES: 1
     SLURM_NTASKS: 2
+    MPIR_CVAR_CH4_OFI_ENABLE_HMEM: 1
 
 osu_bw 2 node:
   stage: test
@@ -58,3 +59,4 @@ osu_bw 2 node:
   variables:
     SLURM_JOB_NUM_NODES: 2
     SLURM_NTASKS: 2
+    MPIR_CVAR_CH4_OFI_ENABLE_HMEM: 1
