@@ -44,7 +44,7 @@ osu_bw 1 node:
   extends: .container-runner-daint-gh200
   image: $PERSIST_IMAGE_NAME
   script:
-    - /usr/local/bin/osu_bw D D
+    - /usr/local/libexec/osu-micro-benchmarks/mpi/pt2pt/osu_bw D D
   variables:
     SLURM_JOB_NUM_NODES: 1
     SLURM_NTASKS: 2
@@ -54,7 +54,7 @@ osu_bw 2 node:
   extends: .container-runner-daint-gh200
   image: $PERSIST_IMAGE_NAME
   script:
-    - /usr/local/bin/osu_bw D D
+    - /usr/local/libexec/osu-micro-benchmarks/mpi/pt2pt/osu_bw D D
   variables:
     SLURM_JOB_NUM_NODES: 2
     SLURM_NTASKS: 2
