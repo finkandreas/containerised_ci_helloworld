@@ -13,6 +13,7 @@ build_job:
   extends: .container-builder-cscs-gh200
   variables:
     DOCKERFILE: ci/docker/Dockerfile.build
+    CSCS_BUILD_CACHE: $CSCS_REGISTRY_PATH/buildcache
 
 mpi4py 1 node:
   stage: test
